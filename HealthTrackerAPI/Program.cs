@@ -1,4 +1,6 @@
+using HealthTrackerApp.Core.SQL;
 using HealthTrackerApp.Core.SQL.DI;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var dbContext = serviceProvider.GetRequiredService<HealthTrackerDatabaseContext>();
+    dbContext.Database.Migrate();
+}
 
 app.Run();
 
