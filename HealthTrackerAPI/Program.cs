@@ -1,7 +1,11 @@
+using HealthTrackerApp.Core.SQL.DI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddHealthTrackerDatabase(builder.Configuration);
 
 var app = builder.Build();
 
@@ -23,3 +27,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
+
+    

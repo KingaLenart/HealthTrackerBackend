@@ -16,10 +16,8 @@ namespace HealthTrackerApp.Core.SQL.Configurations.PhysicalActivitiesConfigurati
 
             builder.HasOne(activitie => activitie.User)
                 .WithMany(user => user.PhysicalActivities)
-                .HasForeignKey(activitie => activitie.UserId);
-
-
-
+                .HasForeignKey(activitie => activitie.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

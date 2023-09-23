@@ -15,7 +15,8 @@ namespace HealthTrackerApp.Core.SQL.Configurations.Pregnancies
 
             builder.HasOne(pregnancy => pregnancy.User)
                 .WithMany(user => user.Pregnancy)
-                .HasForeignKey(pregnancy => pregnancy.UserId);
+                .HasForeignKey(pregnancy => pregnancy.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

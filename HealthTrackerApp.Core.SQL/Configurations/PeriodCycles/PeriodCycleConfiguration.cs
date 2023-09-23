@@ -10,11 +10,11 @@ namespace HealthTrackerApp.Core.SQL.Configurations.PeriodCycles
         {
             builder.ToTable("PeriodsCycle");
             builder.HasKey(periodCycle => periodCycle.Id);
-            builder.HasIndex(periodCycle => periodCycle.IsFirstPeriod).IsUnique();
 
             builder.HasOne(periodCycle => periodCycle.User)
                 .WithMany(user => user.PeriodsCycle)
-                .HasForeignKey(periodCycle => periodCycle.UserId);
+                .HasForeignKey(periodCycle => periodCycle.UserId)
+                .OnDelete (DeleteBehavior.Cascade);
         }
     }
 }

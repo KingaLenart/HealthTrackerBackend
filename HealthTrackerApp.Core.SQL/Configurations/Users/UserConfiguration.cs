@@ -10,20 +10,19 @@ namespace HealthTrackerApp.Core.SQL.Configurations.Users
         {
             builder.ToTable("Users");
             builder.HasKey(user => user.Id);
-            builder.HasIndex(user => user.Id).IsUnique();
+
             builder.Property(user => user.NickName).IsRequired();
             builder.HasIndex(user => user.NickName).IsUnique();
+
             builder.Property(user => user.Email).IsRequired();
             builder.HasIndex(user => user.Email).IsUnique();
+            
+            builder.Property(user => user.Gender).IsRequired();
             builder.Property(user => user.Password).IsRequired();
             builder.Property(user => user.DateOfBirth).IsRequired();
             builder.Property(user => user.Weight).IsRequired();
             builder.Property(user => user.Heights).IsRequired();
 
-            builder.HasOne(user => user.Role)
-                .WithMany()
-                .HasForeignKey(user => user.Role)
-                .IsRequired();
         }
     }
 }

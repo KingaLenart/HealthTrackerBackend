@@ -12,7 +12,7 @@ namespace HealthTrackerApp.Core.Models.Users
         public string Email { get; set; }
         public string? PhoneNumber { get; set; }
         
-        //public Gender 
+        public Gender Gender { get; set; }
         
         public string Password { get; set; }
         public string ForgotPasswordToken { get; set; }
@@ -28,4 +28,10 @@ namespace HealthTrackerApp.Core.Models.Users
 
         public ICollection<PhysicalActivitieEntity>? PhysicalActivities { get; set; }
     }
-}s
+
+    public enum Gender
+    {
+        Woman,
+        Man
+    }
+}
