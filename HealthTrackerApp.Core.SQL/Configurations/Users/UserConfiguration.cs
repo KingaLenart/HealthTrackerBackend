@@ -1,6 +1,9 @@
 ﻿using HealthTrackerApp.Core.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace HealthTrackerApp.Core.SQL.Configurations.Users
 {
@@ -23,6 +26,18 @@ namespace HealthTrackerApp.Core.SQL.Configurations.Users
             builder.Property(user => user.Weight).IsRequired();
             builder.Property(user => user.Heights).IsRequired();
 
+            builder.Property(user => user.RefreshTokens)
+                        .HasConversion(
+                            refreshToken => JsonSerializer.Serialize(refreshToken, new JsonSerializerOptions
+                            {
+                                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                                WriteIndented = true
+                            }),
+                            refreshToken => JsonSerializer.Deserialize<List<string>>(refreshToken, new JsonSerializerOptions
+                            {
+                                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                                WriteIndented = true
+                            }));
         }
     }
 }

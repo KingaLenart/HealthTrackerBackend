@@ -17,6 +17,8 @@ namespace HealthTrackerApp.Core.Models.Users
         public string Password { get; set; }
         public string ForgotPasswordToken { get; set; }
 
+        public List <string> RefreshTokens { get; set; }
+
         public DateTime DateOfBirth { get; set; }
         public float Weight { get; set; }
         public float Heights { get; set; }
