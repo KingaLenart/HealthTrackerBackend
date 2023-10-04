@@ -11,4 +11,8 @@
 		<ProjectReference Include="..\HealthTrackerApp.Core.Services\HealthTrackerApp.Core.Services.csproj" />
 		<ProjectReference Include="..\HealthTrackerApp.Core.SQL\HealthTrackerApp.Core.SQL.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controllers\Users\" />
+	</ItemGroup>
 </Project>

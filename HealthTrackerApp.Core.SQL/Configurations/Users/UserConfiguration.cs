@@ -19,7 +19,7 @@ namespace HealthTrackerApp.Core.SQL.Configurations.Users
 
             builder.Property(user => user.Email).IsRequired();
             builder.HasIndex(user => user.Email).IsUnique();
-            
+
             builder.Property(user => user.Gender).IsRequired();
             builder.Property(user => user.Password).IsRequired();
             builder.Property(user => user.DateOfBirth).IsRequired();

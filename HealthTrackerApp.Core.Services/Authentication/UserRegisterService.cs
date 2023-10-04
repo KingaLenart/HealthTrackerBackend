@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthTrackerApp.Core.Services.Authentication
 {
-    internal class UserRegisterService
+    public class UserRegisterService
     {
         private readonly DbSet<UserEntity> userDbSet;
         private readonly HealthTrackerDatabaseContext healthTrackerDatabaseContext;
@@ -23,9 +23,9 @@ namespace HealthTrackerApp.Core.Services.Authentication
 
         public async Task<UserAuthenticateOutDto> UserRegister(UserRegisterInDto userRegistrationInDto)
         {
-            await userDbSet.AsQueryable().FirstOrDefaultAsync(u => u.Email == userRegistrationInDto.Email);
+            var existingUser = await userDbSet.AsQueryable().FirstOrDefaultAsync(u => u.Email == userRegistrationInDto.Email);
 
-            if (userDbSet != null)
+            if (existingUser != null)
             {
                 throw new Exception("This email is already used!");
             }
