@@ -30,12 +30,13 @@ namespace HealthTrackerApp.Core.Services.Authentication
                 throw new Exception("This email is already used!");
             }
             
-            var uderId = existingUser.Id.ToString();
-            var refreshToken = jwtGeneratorService.JwtGenerateRefreshToken(uderId);
+            var userId = Guid.NewGuid();
+            
+            var refreshToken = jwtGeneratorService.GenerateProtectedToken(new RefreshTokenModel {UserId = userId});
             
             var user = new UserEntity
             {
-                Id = Guid.NewGuid(),
+                Id = userId,
                 NickName = userRegistrationInDto.NickName,
                 Email = userRegistrationInDto.Email,
                 PhoneNumber = userRegistrationInDto.PhoneNumber,

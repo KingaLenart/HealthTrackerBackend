@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Core.Common.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTrackerApp.Core.Services", "HealthTrackerApp.Core.Services\HealthTrackerApp.Core.Services.csproj", "{9256CE54-F7C1-407D-9322-B152E132FF3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Core.Common.Mappers", "HealthTracker.Core.Common.Mappers\HealthTracker.Core.Common.Mappers.csproj", "{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9256CE54-F7C1-407D-9322-B152E132FF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9256CE54-F7C1-407D-9322-B152E132FF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9256CE54-F7C1-407D-9322-B152E132FF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

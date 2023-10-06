@@ -22,9 +22,9 @@ namespace HealthTrackerAPI.Controllers.Authentications
         }
 
         [HttpPost("refreshToken")]
-        public Task<UserAuthenticateOutDto> RefreshToken([FromBody] string refreshToken)
+        public Task<UserAuthenticateOutDto> RefreshToken([FromBody] RefreshTokenInDto refreshToken)
         {
-            return userAuthenticationService.ValidateAndGenerateTokens(refreshToken);
+            return userAuthenticationService.ValidateAndGenerateTokens(refreshToken.RefreshToken);
         }
 
     }

@@ -2,6 +2,8 @@
 using HealthTrackerApp.Core.Models.Users;
 using HealthTrackerApp.Core.SQL;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HealthTrackerApp.Core.Services.Authentication
 {
@@ -37,10 +39,10 @@ namespace HealthTrackerApp.Core.Services.Authentication
                 throw new UnauthorizedAccessException("Nieprawidłowy adres email lub hasło!");
             }
 
-            var userId = existingUser.Id.ToString();
+            var userId = existingUser.Id;
 
             var acceessToken = jwtGeneratorService.JwtGeneratorAccessToken(existingUser);
-            var refreshTokens = jwtGeneratorService.JwtGenerateRefreshToken(userId);
+            var refreshTokens = jwtGeneratorService.GenerateProtectedToken(new RefreshTokenModel {UserId = userId});
 
             if (existingUser.RefreshTokens  == null)
             {
@@ -61,9 +63,36 @@ namespace HealthTrackerApp.Core.Services.Authentication
             return userAuthOutDto;
         }
 
-        public Task<UserAuthenticateOutDto> ValidateAndGenerateTokens (string refreshToken)
+        public async Task<UserAuthenticateOutDto> ValidateAndGenerateTokens (string refreshToken)
         {
-            return null;
+            var refreshTokenModel = jwtGeneratorService.DeserializeAndVerifyProtectedToken(refreshToken);
+            
+            if(refreshTokenModel == null)
+            {
+                throw new Exception("The token is null");
+            }
+
+            var existingUser = await userDbSet.AsQueryable().FirstOrDefaultAsync(user => user.Id.Equals(refreshTokenModel.UserId));
+
+            if (existingUser == null)
+            {
+                throw new InvalidOperationException("Nie ma takiego użytkownika");
+            }
+
+            if (!existingUser.RefreshTokens.Contains(refreshToken))
+            {
+                throw new Exception("User doesn't have this token");
+            }
+
+            var accessToken = jwtGeneratorService.JwtGeneratorAccessToken(existingUser);
+
+            var response = new UserAuthenticateOutDto
+            {
+                AccesToken = accessToken,
+                RefreshToken = refreshToken
+            };
+
+            return response;
         }
     }
 }
