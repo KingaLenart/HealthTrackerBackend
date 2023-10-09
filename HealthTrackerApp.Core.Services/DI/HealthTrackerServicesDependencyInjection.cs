@@ -1,5 +1,6 @@
 ﻿using HealthTrackerApp.Core.Models.Authentication;
 using HealthTrackerApp.Core.Services.Authentication;
+using HealthTrackerApp.Core.Services.User;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,7 @@ namespace HealthTrackerApp.Core.Services.DI
             services.AddScoped<UserAuthenticationService>();
             services.AddScoped<PasswordHasher>();
             services.AddScoped<JwtGeneratorService>();
+            services.AddScoped<UserWriteService>();
         }
     }
 }

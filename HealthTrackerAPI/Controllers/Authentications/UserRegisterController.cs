@@ -6,11 +6,11 @@ namespace HealthTrackerAPI.Controllers.Authentications
 {
     [Route("api/register")]
     [ApiController]
-    public class UserRegisterControllerController : ControllerBase
+    public class UserRegisterController : ControllerBase
     {
         private readonly UserRegisterService userRegisterService;
 
-        public UserRegisterControllerController(UserRegisterService userRegisterService)
+        public UserRegisterController(UserRegisterService userRegisterService)
         {
             this.userRegisterService = userRegisterService;
         }
