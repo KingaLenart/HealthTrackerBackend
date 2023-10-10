@@ -4,6 +4,7 @@ using HealthTrackerApp.Core.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthTrackerApp.Core.SQL.Migrations
 {
     [DbContext(typeof(HealthTrackerDatabaseContext))]
-    partial class HealthTrackerDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231010203318_ChangePeriodTimeSpan")]
+    partial class ChangePeriodTimeSpan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,11 +34,11 @@ namespace HealthTrackerApp.Core.SQL.Migrations
                     b.Property<bool?>("IsFirstPeriod")
                         .HasColumnType("bit");
 
-                    b.Property<long?>("MenstruationLength")
-                        .HasColumnType("bigint");
+                    b.Property<TimeSpan>("MenstruationLength")
+                        .HasColumnType("time");
 
-                    b.Property<long?>("PeriodCycleLenght")
-                        .HasColumnType("bigint");
+                    b.Property<TimeSpan>("PeriodCycleLenght")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("PeriodFinishiDate")
                         .HasColumnType("datetime2");

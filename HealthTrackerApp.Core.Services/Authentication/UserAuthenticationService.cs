@@ -31,12 +31,12 @@ namespace HealthTrackerApp.Core.Services.Authentication
 
             if (existingUser == null)
             {
-                throw new InvalidOperationException("Nie ma takiego użytkownika");
+                throw new InvalidOperationException("There is no such user!");
             }
 
             if (!(passwordHasher.IsPasswordIsCorrect(userInDto.Password, existingUser.Password)))
             {
-                throw new UnauthorizedAccessException("Nieprawidłowy adres email lub hasło!");
+                throw new UnauthorizedAccessException("Invalid email address and/or password!");
             }
 
             var userId = existingUser.Id;

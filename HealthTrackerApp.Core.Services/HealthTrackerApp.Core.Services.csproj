@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthTracker.Core.Common.Dto\HealthTracker.Core.Common.Dto.csproj" />
+    <ProjectReference Include="..\HealthTracker.Core.Common.Mappers\HealthTracker.Core.Common.Mappers.csproj" />
     <ProjectReference Include="..\HealthTrackerApp.Core.Models\HealthTrackerApp.Core.Models.csproj" />
     <ProjectReference Include="..\HealthTrackerApp.Core.SQL\HealthTrackerApp.Core.SQL.csproj" />
   </ItemGroup>

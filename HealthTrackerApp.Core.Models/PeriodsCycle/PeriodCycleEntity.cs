@@ -9,8 +9,8 @@ namespace HealthTrackerApp.Core.Models.PeriodsCycle
         public bool? IsFirstPeriod { get; set; }
         public DateTime PeriodFinishiDate { get; set; }
         
-        public int PeriodCycleLenght { get; set; }
-        public int MenstruationLength { get; set; }
+        public long? PeriodCycleLenght { get; set; }
+        public long? MenstruationLength { get; set; }
         
         public Guid UserId { get; set; }
         public UserEntity User { get; set; }

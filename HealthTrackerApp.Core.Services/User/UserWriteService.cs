@@ -14,7 +14,7 @@ namespace HealthTrackerApp.Core.Services.User
             (HealthTrackerDatabaseContext healthTrackerDatabaseContext)
         {
             this.healthTrackerDatabaseContext = healthTrackerDatabaseContext;
-            this .userDbSet = healthTrackerDatabaseContext.Set<UserEntity>();
+            userDbSet = healthTrackerDatabaseContext.Set<UserEntity>();
         }
 
         public async Task<UserEntity> UpdateUserAsync(UserInDto userInDto)

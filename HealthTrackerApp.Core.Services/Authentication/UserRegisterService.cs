@@ -16,7 +16,7 @@ namespace HealthTrackerApp.Core.Services.Authentication
         public UserRegisterService(HealthTrackerDatabaseContext healthTrackerDatabaseContext, PasswordHasher passwordHasher, JwtGeneratorService jwtGeneratorService)
         {
             this.passwordHasher = passwordHasher;
-            this.userDbSet = healthTrackerDatabaseContext.Set<UserEntity>();
+            userDbSet = healthTrackerDatabaseContext.Set<UserEntity>();
             this.healthTrackerDatabaseContext = healthTrackerDatabaseContext;
             this.jwtGeneratorService = jwtGeneratorService;
         }

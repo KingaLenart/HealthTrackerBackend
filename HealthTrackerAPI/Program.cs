@@ -1,3 +1,4 @@
+using HealthTracker.Core.Common.Mappers.Users;
 using HealthTrackerApp.Core.Services.DI;
 using HealthTrackerApp.Core.SQL;
 using HealthTrackerApp.Core.SQL.DI;
@@ -13,6 +14,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddHealthTrackerDatabase(builder.Configuration);
 builder.Services.AddHealthTrackerServices(builder.Configuration);
+builder.Services.AddAutoMapper(typeof(AutoMapMapper));
 
 //konfiguracja uwierzytelniania JWT
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
