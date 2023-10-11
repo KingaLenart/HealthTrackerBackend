@@ -23,8 +23,12 @@ namespace HealthTrackerApp.Core.Services.PeriodCycle
             this.mapper = mapper;
         }
 
-        public async Task<PeriodCycleOutDto> PeriodCycleCreate(PeriodCycleInDto periodCycleInDto)
+        public async Task PeriodCycleCreate(PeriodCycleInDto periodCycleInDto)
         {
+            if (periodCycleInDto.PeriodStartDate == null)
+            {
+                throw new Exception("You have to enter the start date of the period!");
+            }
             var existingUser = await userEntity.AsQueryable().FirstOrDefaultAsync(user => user.Id == periodCycleInDto.UserId);
             if (existingUser == null)
             {
@@ -36,21 +40,36 @@ namespace HealthTrackerApp.Core.Services.PeriodCycle
             var userPeriod = new PeriodCycleEntity
             {
                 Id = periodId,
-                PeriodStartDate = periodCycleInDto.PeriodStartDate,
-                PeriodFinishiDate = periodCycleInDto.PeriodFinishiDate,
+                PeriodStartDate = (DateTime)periodCycleInDto.PeriodStartDate,
                 IsFirstPeriod = periodCycleInDto.IsFirstPeriod,
                 UserId = existingUser.Id
             };
 
-            userPeriod.PeriodCycleLenght = (userPeriod.PeriodFinishiDate - userPeriod.PeriodStartDate).Ticks;
-            
             periodCycleEntity.Add(userPeriod);
             await healthTrackerDatabaseContext.SaveChangesAsync();
-            
-            var userPeriodOutDto = mapper.Map<PeriodCycleOutDto>(userPeriod);
-                
              
-            return userPeriodOutDto;
+        }
+
+        public async Task <PeriodCycleOutDto> PeriodCycleUpdate (PeriodCycleInDto periodCycleInDto)
+        {
+            var existingPeriod = await periodCycleEntity.AsQueryable().AsTracking().FirstOrDefaultAsync(period => period.Id == periodCycleInDto.Id);
+            
+            if (existingPeriod.PeriodStartDate == null && periodCycleInDto.PeriodStartDate == null)
+            {
+                throw new Exception("Enter the start date of the period!");
+            }
+
+            existingPeriod.PeriodStartDate = periodCycleInDto.PeriodStartDate ?? existingPeriod.PeriodStartDate;
+            existingPeriod.IsFirstPeriod = periodCycleInDto.IsFirstPeriod ?? existingPeriod.IsFirstPeriod;
+            existingPeriod.PeriodFinishiDate = periodCycleInDto?.PeriodFinishiDate;
+
+            existingPeriod.PeriodCycleLenght = (existingPeriod.PeriodFinishiDate - existingPeriod.PeriodStartDate)?.Ticks;
+
+            await healthTrackerDatabaseContext.SaveChangesAsync();
+            
+            var periodOutDto = mapper.Map<PeriodCycleOutDto>(existingPeriod);
+
+            return periodOutDto;
         }
     }
 }

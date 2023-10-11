@@ -17,9 +17,15 @@ namespace HealthTrackerAPI.Controllers.PeriodCycles
         }
 
         [HttpPost]
-        public async Task <PeriodCycleOutDto> AddPeriod([FromBody] PeriodCycleInDto periodCycleInDto)
+        public async Task AddPeriod([FromBody] PeriodCycleInDto periodCycleInDto)
         {
-            return await periodCycleWriteService.PeriodCycleCreate(periodCycleInDto);
+            await periodCycleWriteService.PeriodCycleCreate(periodCycleInDto);
+        }
+
+        [HttpPut]
+        public Task<PeriodCycleOutDto> UpdatePeriod ([FromBody] PeriodCycleInDto periodCycleInDto)
+        {
+            return periodCycleWriteService.PeriodCycleUpdate(periodCycleInDto);
         }
     }
 }
