@@ -20,6 +20,7 @@ namespace HealthTrackerApp.Core.Services.DI
             services.AddScoped<JwtGeneratorService>();
             services.AddScoped<UserWriteService>();
             services.AddScoped<PeriodCycleWriteService>();
+            services.AddScoped<UserReadService>();
         }
     }
 }

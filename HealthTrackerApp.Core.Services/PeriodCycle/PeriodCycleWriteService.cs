@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using HealthTracker.Core.Common.Dto.Periods;
-using HealthTracker.Core.Common.Mappers.Users;
 using HealthTrackerApp.Core.Models.PeriodsCycle;
 using HealthTrackerApp.Core.Models.Users;
 using HealthTrackerApp.Core.SQL;

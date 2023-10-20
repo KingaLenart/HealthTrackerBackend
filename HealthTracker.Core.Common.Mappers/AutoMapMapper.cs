@@ -2,6 +2,7 @@
 using HealthTracker.Core.Common.Dto.Periods;
 using HealthTracker.Core.Common.Dto.Users;
 using HealthTrackerApp.Core.Models.PeriodsCycle;
+using HealthTrackerApp.Core.Models.Users;
 
 namespace HealthTracker.Core.Common.Mappers.Users
 {
@@ -13,6 +14,7 @@ namespace HealthTracker.Core.Common.Mappers.Users
             CreateMap<PeriodCycleOutDto, PeriodCycleInDto>();
             CreateMap<PeriodCycleOutDto, PeriodCycleEntity>();
             CreateMap<PeriodCycleEntity, PeriodCycleOutDto>();
+            CreateMap<UserEntity, UserOutDto>();
         }
     }
 }

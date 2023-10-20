@@ -12,7 +12,7 @@ namespace HealthTrackerApp.Core.Models.PeriodsCycle
         public long? PeriodCycleLenght { get; set; }
         public long? MenstruationLength { get; set; }
         
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } 
         public UserEntity User { get; set; }
     }
 }
