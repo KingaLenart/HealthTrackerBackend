@@ -13,6 +13,7 @@ namespace HealthTrackerApp.Core.Models.Users
         public string? PhoneNumber { get; set; }
         
         public Gender Gender { get; set; }
+        public Role Role { get; set; }
         
         public string Password { get; set; }
         public string ForgotPasswordToken { get; set; }
@@ -35,5 +36,11 @@ namespace HealthTrackerApp.Core.Models.Users
     {
         Woman,
         Man
+    }
+
+    public enum Role
+    {
+        Admin = 1, 
+        User = 2
     }
 }
