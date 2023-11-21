@@ -9,7 +9,8 @@ namespace HealthTrackerApp.Core.Models.Pregnancies
         public Guid UserId { get; set; }
         public UserEntity User { get; set; }
 
-        public DateTime Conceiving { get; set; } 
-        public bool IsGirl { get; set; }
+        public DateTime? Conceiving { get; set; } 
+        public DateTime? DueDate { get; set; }
+        public bool? IsGirl { get; set; }
     }
 }

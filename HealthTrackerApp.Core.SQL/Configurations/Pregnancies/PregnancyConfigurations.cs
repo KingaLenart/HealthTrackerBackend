@@ -10,8 +10,6 @@ namespace HealthTrackerApp.Core.SQL.Configurations.Pregnancies
         {
             builder.ToTable("Pregnancies");
             builder.HasKey(pregnancy => pregnancy.Id);
-            
-            builder.Property(pregnancy => pregnancy.Conceiving).IsRequired();
 
             builder.HasOne(pregnancy => pregnancy.User)
                 .WithMany(user => user.Pregnancy)
