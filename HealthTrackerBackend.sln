@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTrackerApp.Core.Model
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTrackerApp.Core.SQL", "HealthTrackerApp.Core.SQL\HealthTrackerApp.Core.SQL.csproj", "{FD1BF757-467C-40A5-986C-21C4AFB380A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Core.Common.Dto", "HealthTracker.Core.Common.Dto\HealthTracker.Core.Common.Dto.csproj", "{098EAE58-02C0-4E2A-AF26-58E7205F885F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker.Core.Common.Dto", "HealthTracker.Core.Common.Dto\HealthTracker.Core.Common.Dto.csproj", "{098EAE58-02C0-4E2A-AF26-58E7205F885F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTrackerApp.Core.Services", "HealthTrackerApp.Core.Services\HealthTrackerApp.Core.Services.csproj", "{9256CE54-F7C1-407D-9322-B152E132FF3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTrackerApp.Core.Services", "HealthTrackerApp.Core.Services\HealthTrackerApp.Core.Services.csproj", "{9256CE54-F7C1-407D-9322-B152E132FF3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Core.Common.Mappers", "HealthTracker.Core.Common.Mappers\HealthTracker.Core.Common.Mappers.csproj", "{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker.Core.Common.Mappers", "HealthTracker.Core.Common.Mappers\HealthTracker.Core.Common.Mappers.csproj", "{962A604C-3A7B-4E81-A5C9-29C6B7848E7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

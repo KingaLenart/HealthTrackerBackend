@@ -34,6 +34,7 @@ namespace HealthTrackerApp.Core.Services.Authentication
                 {
                     new Claim(ClaimTypes.NameIdentifier, existingUser.Id.ToString()),
                     new Claim(ClaimTypes.Email, existingUser.Email),
+                    new Claim (ClaimTypes.Role, existingUser.Role.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(authenticationSettings.JwtExpireTime),
                 SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)

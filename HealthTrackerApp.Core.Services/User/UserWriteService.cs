@@ -40,5 +40,26 @@ namespace HealthTrackerApp.Core.Services.User
                 throw new Exception();
             }
         }
+
+        public async Task GivingRoleAsync (RoleInDto roleInDto)
+        {
+            try
+            {
+                var existingUser = await userDbSet.AsQueryable().AsTracking().FirstOrDefaultAsync(u => u.Id == roleInDto.UserId);
+
+                if(existingUser == null)
+                {
+                    throw new Exception("User with the provided ID not found.");
+                }
+
+                existingUser.Role = roleInDto.Role;
+
+                await healthTrackerDatabaseContext.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

@@ -17,10 +17,15 @@ namespace HealthTrackerAPI.Controllers.Users
         }
 
         [HttpPut]
-     public Task UpdateUser([FromBody] UserInDto userInDto)
+        public Task UpdateUser([FromBody] UserInDto userInDto)
         {
             return userWriteService.UpdateUserAsync(userInDto);
         }
-
+        
+        [HttpPut("givingRole")]
+        public Task GivingRole([FromBody] RoleInDto roleInDto)
+        {
+            return userWriteService.GivingRoleAsync(roleInDto);
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace HealthTrackerApp.Core.Services.Authentication
                 Email = userRegistrationInDto.Email,
                 PhoneNumber = userRegistrationInDto.PhoneNumber,
                 Gender = userRegistrationInDto.Gender,
+                Role = Role.User,
                 Password = passwordHasher.Hash(userRegistrationInDto.Password),
                 RefreshTokens = new List<string> { refreshToken },
             };

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthTrackerAPI.Controllers.Users
 {
     [Route("api/users")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class UserReadController : ControllerBase
     {
         private readonly UserReadService userReadService;
