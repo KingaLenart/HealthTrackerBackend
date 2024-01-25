@@ -27,5 +27,11 @@ namespace HealthTrackerAPI.Controllers.PeriodCycles
         {
             return periodCycleWriteService.PeriodCycleUpdate(periodCycleInDto);
         }
+
+        [HttpDelete("{periodId}")]
+        public Task DeletePEriod(Guid periodId)
+        {
+            return periodCycleWriteService.DeleteAsync(periodId);
+        }
     }
 }

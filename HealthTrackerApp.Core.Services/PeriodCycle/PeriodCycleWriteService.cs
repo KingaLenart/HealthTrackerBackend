@@ -14,7 +14,9 @@ namespace HealthTrackerApp.Core.Services.PeriodCycle
         private readonly DbSet<PeriodCycleEntity> periodCycleEntity;
         private readonly IMapper mapper;
 
-        public PeriodCycleWriteService(HealthTrackerDatabaseContext healthTrackerDatabaseContext, IMapper mapper)
+        public PeriodCycleWriteService
+            (HealthTrackerDatabaseContext healthTrackerDatabaseContext, 
+            IMapper mapper)
         {
             this.healthTrackerDatabaseContext = healthTrackerDatabaseContext;
             userEntity = healthTrackerDatabaseContext.Set<UserEntity>();
@@ -69,6 +71,22 @@ namespace HealthTrackerApp.Core.Services.PeriodCycle
             var periodOutDto = mapper.Map<PeriodCycleOutDto>(existingPeriod);
 
             return periodOutDto;
+        }
+
+        public async Task DeleteAsync(Guid periodId)
+        {
+            var periodToRemove = await periodCycleEntity.FindAsync(periodId);
+
+            if(periodToRemove != null)
+            {
+                periodCycleEntity.Remove(periodToRemove);
+
+                await healthTrackerDatabaseContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("No such menstrual period was introduced");
+            }
         }
     }
 }

@@ -16,7 +16,6 @@ namespace HealthTrackerApp.Core.Models.PeriodsCycle
         public long? PeriodCycleLenght { get; set; }
         public long? MenstruationLength { get; set; }
         
-        
     }
 }
 
