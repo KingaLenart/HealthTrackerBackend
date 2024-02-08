@@ -27,7 +27,7 @@ namespace HealthTrackerApp.Core.Models.Users
         public ICollection<PeriodCycleEntity>? PeriodsCycle { get; set; }
  
         public bool IsPregnant { get; set; }
-        public ICollection<PregnancyEntity>? Pregnancy { get; set; }
+        public ICollection<PregnancyEntity>? Pregnancies { get; set; }
 
         public ICollection<PhysicalActivitieEntity>? PhysicalActivities { get; set; }
     }
